@@ -1,24 +1,30 @@
 package main.flight;
 
 public enum City {
-    KYIV("Київ"),
-    LVIV("Львів"),
-    ODESSA("Одеса"),
-    LAS_VEGAS("Лас-Вегас"),
-    NEW_YORK("Нью-Йорк"),
-    PARIS("Париж"),
-    MIAMI("Маямі"),
-    LONDON("Лондон"),
-    TORONTO("Торонто"),
-    CAIRO("Каїр"),
-    TOKYO("Токіо"),
-    AMSTERDAM("Амстердам"),
-    BERLIN("Берлін"),
-    BOSTON("Бостон"),
-    TEL_AVIV("Тель-Авів"),
-    TALLINN("Таллінн"),
-    WARSAW("Варшава"),
-    PRAGUE("Прага");
+    KYIV("Kyiv"),
+    LVIV("Lviv"),
+    ODESSA("Odessa"),
+    LAS_VEGAS("Las-Vegas"),
+    NEW_YORK("New-York"),
+    PARIS("Paris"),
+    MIAMI("Miami"),
+    LONDON("London"),
+    TORONTO("Toronto"),
+    CAIRO("Cairo"),
+    DUBAI("Dubai"),
+    SEOUL("Seoul"),
+    TOKYO("Tokyo"),
+    ISTANBUL("Istanbul"),
+    AMSTERDAM("Amsterdam"),
+    BERLIN("Berlin"),
+    MADRID("Madrid"),
+    BALI("Bali"),
+    MALDIVES("Maldives"),
+    BOSTON("Boston"),
+    TEL_AVIV("Tel-Aviv"),
+    TALLINN("Tallinn"),
+    WARSAW("Warsaw"),
+    PRAGUE("Prague");
 
     private final String city;
 
@@ -26,7 +32,7 @@ public enum City {
         this.city = city;
     }
 
-    public String getCity() {
+    public String getCityName() {
         return this.city;
     }
 }
