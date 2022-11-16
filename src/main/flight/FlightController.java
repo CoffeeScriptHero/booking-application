@@ -1,5 +1,6 @@
 package main.flight;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -10,8 +11,16 @@ public class FlightController {
         return flightService.getAllFlights();
     }
 
+    public ArrayList<Flight> findAvailableFlights(City destination, LocalDate date, int peopleNumber) {
+        return flightService.findAvailableFlights(destination, date, peopleNumber);
+    }
+
     public void displayAllFlights() {
         flightService.displayAllFlights();
+    }
+
+    public void displayFlights(ArrayList<Flight> flights) {
+        flightService.displayFlights(flights);
     }
 
     public void createFlights() {

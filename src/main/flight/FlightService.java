@@ -16,8 +16,16 @@ public class FlightService {
         return flightDao.getAllFlights();
     }
 
+    public ArrayList<Flight> findAvailableFlights(City destination, LocalDate date, int peopleNumber) {
+        return flightDao.findAvailableFlights(destination, date, peopleNumber);
+    }
+
     public void displayAllFlights() {
         getAllFlights().forEach(Flight::prettyFormat);
+    }
+
+    public void displayFlights(ArrayList<Flight> flights) {
+        flights.forEach(Flight::prettyFormat);
     }
 
     public Optional<Flight> getFlight(int id) {
@@ -51,7 +59,7 @@ public class FlightService {
                         City.LONDON, City.NEW_YORK, 17
                 ),
                 new Flight(
-                        LocalDate.of(2022, 12, 1), LocalTime.of(12, 35),
+                        LocalDate.of(2022, 11, 29), LocalTime.of(12, 35),
                         City.MIAMI, City.LAS_VEGAS, 2
                 ),
                 new Flight(
@@ -72,7 +80,7 @@ public class FlightService {
                 ),
                 new Flight(
                         LocalDate.of(2022, 12, 6), LocalTime.of(8, 40),
-                        City.CAIRO, City.LVIV, 16
+                        City.CAIRO, City.TOKYO, 16
                 ),
                 new Flight(
                         LocalDate.of(2022, 12, 6), LocalTime.of(12, 0),

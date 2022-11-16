@@ -3,8 +3,10 @@ package main.flight;
 import main.logger.Logger;
 
 import java.io.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class CollectionFlightDAO implements FlightDAO<Flight> {
     private static final CollectionFlightDAO collectionFlightDAO = new CollectionFlightDAO();
@@ -17,6 +19,13 @@ public class CollectionFlightDAO implements FlightDAO<Flight> {
 
     public static CollectionFlightDAO getInstance() {
         return collectionFlightDAO;
+    }
+
+    public ArrayList<Flight> findAvailableFlights(City destination, LocalDate date, int peopleNumber) {
+        return (ArrayList<Flight>) flights.stream().filter(flight ->
+                flight.getDestination().getCityName().equals(destination.getCityName())
+                        && flight.getDate().equals(date)
+                        && flight.getAvailableSeats() >= peopleNumber).collect(Collectors.toList());
     }
 
     @Override
