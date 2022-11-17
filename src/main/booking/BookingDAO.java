@@ -3,12 +3,11 @@ package main.booking;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class BookingDAO {
 
     private final List <Booking> bookingList = new ArrayList<>();
-    File bookingBase = new File("src/main/java/org/example/bookingData.dat");
+    File bookingBase = new File("src/main/java/org/example/bookingData.txt");
 
 
     public List<Booking> getBookingList(){
@@ -18,11 +17,13 @@ public class BookingDAO {
     public void addBooking(Booking newBooking){
         bookingList.add(newBooking);
     }
-// something specious
+
     public void cancelBooking(int id) {
-        bookingList.stream()
-                .filter(element -> element.getId() != id)
-                .collect(Collectors.toList());
+        for (int i = 0; i < bookingList.size(); i++) {
+            if (bookingList.get(i).getId() == id) {
+                bookingList.remove(bookingList.get(i));
+            }
+        }
     }
 
     public void saveData (ArrayList<Booking> bookingList) {

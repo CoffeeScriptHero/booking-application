@@ -1,5 +1,7 @@
 package main.booking;
 
+import main.flight.Flight;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -9,8 +11,8 @@ public class BookingService {
     private final BookingDAO bookingDAO = new BookingDAO();
     Scanner scanner = new Scanner(System.in);
 
-    public void makeBooking(String name, String surname){
-        try {Booking newBooking = new Booking(name, surname);
+    public void makeBooking(Flight flight, String name, String surname){
+        try {Booking newBooking = new Booking(flight, name, surname);
             System.out.println("You made a successful booking: " + newBooking);
             bookingDAO.addBooking(newBooking);
         } catch (BookingException e){
