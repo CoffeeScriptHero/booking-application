@@ -2,10 +2,11 @@ package main.booking;
 
 import main.flight.Flight;
 
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.Random;
 
-public class Booking {
+public class Booking implements Serializable {
 
     Random random = new Random();
 
@@ -15,7 +16,7 @@ public class Booking {
     private final Flight flight;
 
     public Booking(Flight flight, String name, String surname) {
-        this.id = (random.nextInt() * 9000) + 1000;
+        this.id = random.nextInt(1001);
         this.flight = flight;
         this.name = name;
         this.surname = surname;
@@ -27,12 +28,12 @@ public class Booking {
 
     @Override
     public String toString() {
-        return "Booking { " +
+        return "\nBooking { " +
                 "id=" + id +
                 ", flight=" + flight +
                 ", passName='" + name +
                 ", passSurname='" + surname +
-                '}';
+                "}";
     }
 
     public String getName() {

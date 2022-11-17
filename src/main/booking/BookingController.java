@@ -9,8 +9,8 @@ public class BookingController {
 
     BookingService bookingService = new BookingService();
 
-    public void makeBooking(Flight flight, String passName, String passSurname){
-        bookingService.makeBooking(flight, passName, passSurname);
+    public Booking makeBooking(Flight flight, String passName, String passSurname){
+        return bookingService.makeBooking(flight, passName, passSurname);
     }
 
     public void cancelBooking(int id){
@@ -26,5 +26,9 @@ public class BookingController {
 
     public ArrayList<Booking> getData() {
         return bookingService.getData();
+    }
+
+    public List<Booking> getBookingList(){
+        return bookingService.getBookingList();
     }
 }

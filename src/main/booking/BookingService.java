@@ -4,20 +4,20 @@ import main.flight.Flight;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class BookingService {
-    private final BookingDAO bookingDAO = new BookingDAO();
-    Scanner scanner = new Scanner(System.in);
+    private final BookingDAO bookingDAO;
 
-    public void makeBooking(Flight flight, String name, String surname){
-        try {Booking newBooking = new Booking(flight, name, surname);
+    public BookingService() {
+        this.bookingDAO = new CollectionBookingDAO();
+    }
+
+    public Booking makeBooking(Flight flight, String name, String surname){
+       Booking newBooking = new Booking(flight, name, surname);
             System.out.println("You made a successful booking: " + newBooking);
             bookingDAO.addBooking(newBooking);
-        } catch (BookingException e){
-            e.getBookingException("Something went wrong, please try again");
-        }
+            return newBooking;
     }
 
     public void cancelBooking(int id) {
@@ -30,6 +30,7 @@ public class BookingService {
             for (Integer integer : idList) {
                 if (integer == id) {
                     bookingDAO.cancelBooking(id);
+                    System.out.println("Your booking #" + id + " successfully canceled");
                 }
             }
         } catch (BookingException e){
@@ -50,6 +51,10 @@ public class BookingService {
 
     public ArrayList<Booking> getData() {
         return bookingDAO.getData();
+    }
+
+    public List<Booking> getBookingList(){
+        return bookingDAO.getBookingList();
     }
 
 }
