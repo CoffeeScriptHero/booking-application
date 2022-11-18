@@ -1,5 +1,7 @@
 package main.flight;
 
+import main.styles.TextStyle;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -23,12 +25,27 @@ public class Flight implements Serializable {
         this.availableSeats = availableSeats;
     }
 
-//    private int generateAvailableSeats() {
-//        Random random = new Random();
-//        return new Random().nextInt(5, 31);
-//    }
+    public Flight(LocalDate date, LocalTime time, City origin, City destination, int availableSeats) {
+        this.id = this.generateId();
+        this.date = date;
+        this.time = time;
+        this.origin = origin;
+        this.destination = destination;
+        this.availableSeats = availableSeats;
+    }
 
-//    private
+    private int generateId() {
+        // returns a random id in range [1, 10000]
+        return new Random().nextInt(1, 10001);
+    }
+
+    public void addAvailableSeats(int number) {
+        this.availableSeats += number;
+    }
+
+    public void subtractAvailableSeats(int number) {
+        this.availableSeats -= number;
+    }
 
     public int getId() {
         return id;
@@ -78,6 +95,17 @@ public class Flight implements Serializable {
         this.availableSeats = availableSeats;
     }
 
+    public void prettyFormat() {
+        String title = "------------------- Flight -------------------";
+        String end = "----------------------------------------------";
+        String bold = TextStyle.BLACK_BOLD.getStyle();
+        String reset = TextStyle.RESET.getStyle();
+        String spaces = availableSeats >= 10 ? "   " : "    ";
+        System.out.printf("%s\n\tFrom: %s%s%s\n\tTo:   %s%s%s\n\tDate: %s\t  Time: %s\n\tAvailable seats: %d%sFlight id: %d\n%s\n",
+                title, bold, origin.getCityName(), reset, bold, destination.getCityName(), reset, date, time,
+                availableSeats, spaces, id, end);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -94,13 +122,7 @@ public class Flight implements Serializable {
 
     @Override
     public String toString() {
-        return "Flight{" +
-                "id=" + id +
-                ", date=" + date +
-                ", time=" + time +
-                ", origin=" + origin +
-                ", destination=" + destination +
-                ", availableSeats=" + availableSeats +
-                '}';
+        return String.format("Flight{id=%d, date=%s, time=%s, origin=%s," +
+                " destination=%s, availableSeats=%d}", id, date, time, origin, destination, availableSeats);
     }
 }
