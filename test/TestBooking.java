@@ -33,6 +33,4 @@ public class TestBooking {
         bookingController.cancelBooking(bookingController.getBookingList().get(1).getId());
         assertEquals(2, bookingController.getBookingList().size());
     }
-
-
 }

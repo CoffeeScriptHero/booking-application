@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CollectionBookingDAO implements BookingDAO {
+
     private final ArrayList<Booking> bookingList = getData();
     File bookingBase = new File("src/main/booking/bookingData.txt");
 
