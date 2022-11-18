@@ -16,6 +16,15 @@ public class Flight implements Serializable {
     private City destination;
     private int availableSeats;
 
+    public Flight(int id, LocalDate date, LocalTime time, City origin, City destination, int availableSeats) {
+        this.id = id;
+        this.date = date;
+        this.time = time;
+        this.origin = origin;
+        this.destination = destination;
+        this.availableSeats = availableSeats;
+    }
+
     public Flight(LocalDate date, LocalTime time, City origin, City destination, int availableSeats) {
         this.id = this.generateId();
         this.date = date;

@@ -7,6 +7,10 @@ import java.util.Optional;
 public class FlightController {
     FlightService flightService = new FlightService();
 
+    public void clearDatabase() {
+        flightService.clearDatabase();
+    }
+
     public ArrayList<Flight> getAllFlights() {
         return flightService.getAllFlights();
     }

@@ -11,6 +11,10 @@ import java.util.Optional;
 public class FlightService {
     final CollectionFlightDAO flightDao = CollectionFlightDAO.getInstance();
 
+    public void clearDatabase() {
+        flightDao.clearDatabase();
+    }
+
     public ArrayList<Flight> getAllFlights() {
         Logger.info("Flights have been received");
         return flightDao.getAllFlights();

@@ -11,14 +11,17 @@ import java.util.stream.Collectors;
 public class CollectionFlightDAO implements FlightDAO<Flight> {
     private static final CollectionFlightDAO collectionFlightDAO = new CollectionFlightDAO();
     private final String DATABASE = "src/main/database/flights.txt";
-    private final ArrayList<Flight> flights;
+    private ArrayList<Flight> flights = loadFlights();
 
     private CollectionFlightDAO() {
-        flights = loadFlights();
     }
 
     public static CollectionFlightDAO getInstance() {
         return collectionFlightDAO;
+    }
+
+    public void clearDatabase() {
+        saveFlights(new ArrayList<>());
     }
 
     public ArrayList<Flight> findAvailableFlights(City destination, LocalDate date, int peopleNumber) {
@@ -54,6 +57,7 @@ public class CollectionFlightDAO implements FlightDAO<Flight> {
                 flightsFromFile.add((Flight) ois.readObject());
             }
             Logger.info("Flights were loaded from file");
+            this.flights = flightsFromFile;
         } catch (IOException | ClassNotFoundException exception) {
             Logger.info("Flights were not loaded from file");
         }
