@@ -1819,6 +1819,83 @@
 18/11/2022 17:15 [DEBUG] Flights are saved to a file
 18/11/2022 17:15 [DEBUG] Flights were loaded from file
 <<<<<<< HEAD
+19/11/2022 16:43 [DEBUG] Flights were loaded from file
+19/11/2022 16:43 [DEBUG] Flights are saved to a file
+19/11/2022 16:43 [DEBUG] Flights were loaded from file
+19/11/2022 16:43 [DEBUG] Flights are saved to a file
+19/11/2022 16:43 [DEBUG] Flights were loaded from file
+19/11/2022 16:43 [DEBUG] Flights are saved to a file
+19/11/2022 16:43 [DEBUG] Flights were loaded from file
+19/11/2022 16:43 [DEBUG] Flights have been received
+19/11/2022 16:43 [DEBUG] Flights are saved to a file
+19/11/2022 16:43 [DEBUG] Flights were loaded from file
+19/11/2022 16:43 [DEBUG] Flights were loaded from file
+19/11/2022 16:43 [DEBUG] Flights are saved to a file
+19/11/2022 16:43 [DEBUG] Flights were loaded from file
+19/11/2022 16:43 [DEBUG] Flights are saved to a file
+19/11/2022 16:43 [DEBUG] Flights were loaded from file
+19/11/2022 16:43 [DEBUG] Flights are saved to a file
+19/11/2022 16:43 [DEBUG] Flights were loaded from file
+19/11/2022 16:43 [DEBUG] Flights are saved to a file
+19/11/2022 16:43 [DEBUG] Flights were loaded from file
+19/11/2022 16:43 [DEBUG] Flights were loaded from file
+19/11/2022 16:43 [DEBUG] Flights are saved to a file
+19/11/2022 16:43 [DEBUG] Flights were loaded from file
+19/11/2022 16:43 [DEBUG] Flights are saved to a file
+19/11/2022 16:43 [DEBUG] Flights were loaded from file
+19/11/2022 16:43 [DEBUG] Flights are saved to a file
+19/11/2022 16:43 [DEBUG] Flights were loaded from file
+19/11/2022 16:43 [DEBUG] Flights are saved to a file
+19/11/2022 16:43 [DEBUG] Flights were loaded from file
+19/11/2022 16:43 [DEBUG] Flights are saved to a file
+19/11/2022 16:43 [DEBUG] Flights were loaded from file
+19/11/2022 16:43 [DEBUG] Flights are saved to a file
+19/11/2022 16:43 [DEBUG] Flights were loaded from file
+19/11/2022 16:43 [DEBUG] Flights are saved to a file
+19/11/2022 16:43 [DEBUG] Flights were loaded from file
+19/11/2022 16:43 [DEBUG] Flights are saved to a file
+19/11/2022 16:43 [DEBUG] Flights were loaded from file
+19/11/2022 17:58 [DEBUG] Bookings were loaded from file
+19/11/2022 17:58 [DEBUG] All bookings received
+19/11/2022 17:58 [DEBUG] All bookings received
+19/11/2022 17:58 [DEBUG] Bookings are saved to file
+19/11/2022 17:58 [DEBUG] Bookings were loaded from file
+19/11/2022 17:58 [DEBUG] Bookings are saved to file
+19/11/2022 17:58 [DEBUG] Bookings were loaded from file
+19/11/2022 17:58 [DEBUG] All bookings received
+19/11/2022 17:58 [DEBUG] All bookings received
+19/11/2022 17:58 [DEBUG] All bookings received
+19/11/2022 17:58 [DEBUG] All bookings received
+19/11/2022 17:58 [DEBUG] All bookings received
+19/11/2022 17:58 [DEBUG] Bookings are saved to file
+19/11/2022 17:58 [DEBUG] Bookings were loaded from file
+19/11/2022 17:58 [DEBUG] All bookings received
+19/11/2022 17:58 [DEBUG] All bookings received
+19/11/2022 17:58 [DEBUG] All bookings received
+19/11/2022 17:58 [DEBUG] Bookings are saved to file
+19/11/2022 17:58 [DEBUG] Bookings were loaded from file
+19/11/2022 17:58 [DEBUG] All bookings received
+19/11/2022 17:58 [DEBUG] All bookings received
+19/11/2022 17:58 [DEBUG] All bookings received
+19/11/2022 17:58 [DEBUG] Bookings are saved to file
+19/11/2022 17:58 [DEBUG] Bookings were loaded from file
+19/11/2022 17:58 [DEBUG] All bookings received
+19/11/2022 17:58 [DEBUG] All bookings received
+19/11/2022 17:58 [DEBUG] Bookings are saved to file
+19/11/2022 17:59 [DEBUG] Bookings were loaded from file
+19/11/2022 17:59 [DEBUG] Bookings are saved to file
+19/11/2022 17:59 [DEBUG] Bookings were loaded from file
+19/11/2022 17:59 [DEBUG] Bookings are saved to file
+19/11/2022 17:59 [DEBUG] Bookings were loaded from file
+19/11/2022 17:59 [DEBUG] Bookings are saved to file
+19/11/2022 17:59 [DEBUG] Bookings were loaded from file
+19/11/2022 17:59 [DEBUG] Bookings are saved to file
+19/11/2022 17:59 [DEBUG] Bookings were loaded from file
+19/11/2022 17:59 [DEBUG] Bookings are saved to file
+19/11/2022 17:59 [DEBUG] Bookings were loaded from file
+19/11/2022 17:59 [DEBUG] Bookings are saved to file
+=======
+<<<<<<< HEAD
 19/11/2022 12:21 [DEBUG] Flights were loaded from file
 19/11/2022 12:21 [DEBUG] Flights have been received
 19/11/2022 12:21 [DEBUG] Flights have been received
@@ -2612,3 +2689,4 @@
 19/11/2022 16:08 [ERROR] Error
 19/11/2022 16:08 [DEBUG] Flights were loaded from file
 19/11/2022 16:08 [ERROR] Error
+>>>>>>> master
