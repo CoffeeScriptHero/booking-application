@@ -42,7 +42,7 @@ public class ComandUser {
 
                         showTaskAuthorization();
 
-                        System.out.println("Enter a number from 0 to 5:");
+                        System.out.println("Enter a number from 0 to 6:");
                         int numUser = scannerNumUser();
 
                         if (numUser == 0) {
