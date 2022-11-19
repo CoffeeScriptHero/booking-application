@@ -1,10 +1,11 @@
 package main;
 
-import main.flight.FlightController;
+import main.comandUser.ComandUser;
 
 public class Main {
     public static void main(String[] args) {
-        FlightController fc = new FlightController();
-        fc.displayAllFlights();
+        ComandUser test = new ComandUser();
+//        FlightController fc = new FlightController();
+//        fc.displayAllFlights();
     }
 }
