@@ -49,8 +49,6 @@ public enum City {
         return destination;
     }
 
-
-
     public String getCityName() {
         return this.city;
     }

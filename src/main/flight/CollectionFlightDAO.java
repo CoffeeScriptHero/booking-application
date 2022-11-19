@@ -1,12 +1,9 @@
 package main.flight;
 
-import jdk.jfr.Period;
 import main.logger.Logger;
 
 import java.io.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.stream.Collectors;
