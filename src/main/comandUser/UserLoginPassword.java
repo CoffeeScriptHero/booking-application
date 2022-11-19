@@ -20,10 +20,10 @@ public class UserLoginPassword {
     private ArrayList<UserLoginPassword> userLoginPasswords = loadUserLoginPasswords();
     BookingController userBooking = new BookingController();
 
-    public UserLoginPassword(String login, String password){
-        this.login = login;
-        this.password = password;
-    }
+//    public UserLoginPassword(String login, String password){
+//        this.login = login;
+//        this.password = password;
+//    }
     public UserLoginPassword(String login, String password, List<Booking> booking){
         this.login = login;
         this.password = password;
