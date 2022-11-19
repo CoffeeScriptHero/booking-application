@@ -9,7 +9,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserLoginPassword {
+public class UserLoginPassword implements Serializable{
     private String login;
     private String password;
     public List<Booking> getBooking() {
@@ -17,8 +17,6 @@ public class UserLoginPassword {
     }
     private List<Booking> booking;
     private final String AUTHORIZATION = "src/main/database/LoginPassword.txt";
-    private ArrayList<UserLoginPassword> userLoginPasswords = loadUserLoginPasswords();
-    BookingController userBooking = new BookingController();
 
 //    public UserLoginPassword(String login, String password){
 //        this.login = login;
@@ -54,8 +52,6 @@ public class UserLoginPassword {
             while (fis.available() > 0) {
                 userLoginPasswordsFromFile.add((UserLoginPassword) ois.readObject());
             }
-            Logger.info("Not correct Login or Password");
-            this.userLoginPasswords = userLoginPasswordsFromFile;
         } catch (IOException | ClassNotFoundException exception) {
             Logger.error("Error");
 
