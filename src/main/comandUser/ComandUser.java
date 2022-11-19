@@ -15,38 +15,64 @@ public class ComandUser {
     FlightController flightController = new FlightController();
     BookingController bookingController = new BookingController();
 
+    UserLoginPassword userLoginPassword = new UserLoginPassword();
+
     public ComandUser() {
 
-        while (true) {
+        boolean audit = true;
+        while (audit) {
 
-            showTask();
+            showRegistration();
+            int registrationTask = scannerNumUser();
 
-            System.out.println("Enter a number from 0 to 5:");
-            int numUser = scannerNumUser();
-
-            if (numUser == 0) {
-                ArrayList saveBooking = (ArrayList) bookingController.getBookingList();
-                bookingController.saveData(saveBooking);
+            if (registrationTask == 0) {
                 break;
             }
 
-            switch (numUser) {
+            switch (registrationTask) {
                 case 1 -> {
-                    onlineScoreboard();
+                    auditRegistration();
                 }
                 case 2 -> {
-                    showFlightInformation();
+                    boolean console = true;
+                    while (console) {
+
+                        showTask();
+
+                        System.out.println("Enter a number from 0 to 5:");
+                        int numUser = scannerNumUser();
+
+                        if (numUser == 0) {
+                            ArrayList saveBooking = (ArrayList) bookingController.getBookingList();
+                            bookingController.saveData(saveBooking);
+                            audit = false;
+                            break;
+                        }
+
+                        switch (numUser) {
+                            case 1 -> {
+                                onlineScoreboard();
+                            }
+                            case 2 -> {
+                                showFlightInformation();
+                            }
+                            case 3 -> {
+                                flightSearchAndBooking();
+                            }
+                            case 4 -> {
+                                cancelTheReservation();
+                            }
+                            case 5 -> {
+                                myFlights();
+                            }
+                            case 6 -> {
+                                console = false;
+                            }
+                            default -> System.out.println("Incorrect data. Try again");
+                        }
+                    }
                 }
-                case 3 -> {
-                    flightSearchAndBooking();
-                }
-                case 4 -> {
-                    cancelTheReservation();
-                }
-                case 5 -> {
-                    myFlights();
-                }
-                default -> System.out.println("Incorrect data. Try again");
+
             }
         }
     }
@@ -58,7 +84,8 @@ public class ComandUser {
                 scannerNum.next();
             }
             number = scannerNum.nextInt();
-        } while (number < 0 || number > 6);
+        } while (number < 0 || number > 7);
+
         return number;
     }
     public int scannerNumUserOperation(){
@@ -90,6 +117,7 @@ public class ComandUser {
                 - 3. Flight search and booking
                 - 4. Cancel the reservation
                 - 5. My flights
+                - 6. End session
                 - 0. Exit""");
     }
 
@@ -113,27 +141,51 @@ public class ComandUser {
         LocalDate dateUser = LocalDate.parse(date);
         System.out.println("Please, enter number of persons:");
         int numberOfPerson = scannerNumUserOperation();
-        ArrayList<Flight> f = flightController.findAvailableFlights(City.valueOf(destination.toUpperCase()), dateUser, numberOfPerson);
-        flightController.displayFlights(f);
-        //Якщо не знайдено помилка
-        System.out.println("\n" +
-                "Enter the ID of the flight you are interested in (to exit to the main menu, press 0):");
-        int numUserOperation3 = scannerNumUserOperation();
-        if(numUserOperation3 == 0) {
-            return;
-        } else {
-            flightController.getFlight(numUserOperation3).ifPresentOrElse(
-                    (flight) -> {flight.subtractAvailableSeats(numberOfPerson);for (int i = 0; i < numberOfPerson; i++) {
-                        System.out.println("Enter name:");
-                        String name = scannerStrUser();
-                        System.out.println("Enter surname:");
-                        String surname = scannerStrUser();
-                        bookingController.makeBooking(flight, name, surname);
-                        bookingController.saveData((ArrayList<Booking>) bookingController.getMyBookings(name, surname));
 
-                    }},
-                    () -> System.out.println("There is no such flight")
-            );
+        ArrayList<Flight> flights = flightController.findAvailableFlights(City.valueOf(destination.toUpperCase()), dateUser, numberOfPerson);
+        if(flights.size() == 0){
+            System.out.println("Unfortunately, there are no available flights.");
+        }else {
+            flightController.displayFlights(flights);
+            System.out.println("\n" +
+                    "Enter the ID of the flight you are interested in (to exit to the main menu, press 0):");
+            int numUserOperation3 = scannerNumUserOperation();
+            if (numUserOperation3 == 0) {
+                return;
+            } else {
+                flightController.getFlight(numUserOperation3).ifPresentOrElse(
+                        (flight) -> {
+                            flight.subtractAvailableSeats(numberOfPerson);
+                            for (int i = 0; i < numberOfPerson; i++) {
+                                System.out.println("Enter name:");
+                                String name = scannerStrUser();
+                                System.out.println("Enter surname:");
+                                String surname = scannerStrUser();
+                                doYouWantRegistration();
+                                int registrationTask = scannerNumUser();
+                                switch (registrationTask) {
+                                    case 1 -> {
+                                        System.out.println("Enter login:");
+                                        String login = scannerStrUser();
+                                        System.out.println("Enter password:");
+                                        String password = scannerStrUser();
+                                        UserLoginPassword newUser = new UserLoginPassword(login, password, bookingController.getMyBookings(name, surname));
+                                        ArrayList<UserLoginPassword> registration = new ArrayList<UserLoginPassword>();
+                                        registration.add(newUser);
+                                        newUser.saveLoginPassword(registration);
+                                    }
+                                    case 2 -> {
+                                        continue;
+                                    }
+                                }
+                                bookingController.makeBooking(flight, name, surname);
+                                bookingController.saveData((ArrayList<Booking>) bookingController.getMyBookings(name, surname));
+
+                            }
+                        },
+                        () -> System.out.println("There is no such flight")
+                );
+            }
         }
     }
 
@@ -151,6 +203,37 @@ public class ComandUser {
         //Якщо немає бронювань показати
         String surname = scannerStrUser();
         System.out.println(bookingController.getMyBookings(name, surname));
+    }
+
+    public void showRegistration(){
+        System.out.println("""
+                
+                Are you registered?
+                - 1. Yes
+                - 2. No
+                - 0. Exit""");
+    }
+
+    public void auditRegistration(){
+        System.out.println("Enter login:");
+        String login = scannerStrUser();
+        System.out.println("Enter password:");
+        String password = scannerStrUser();
+        UserLoginPassword user = new UserLoginPassword(login, password);
+        ArrayList<UserLoginPassword> audit = userLoginPassword.loadUserLoginPasswords();
+        for (int i = 0; i < audit.size(); i++){
+            if(audit.get(i).equals(user)){
+                System.out.println("Check passed. Launching the program...");
+            }
+        }
+    }
+
+    public void doYouWantRegistration(){
+        System.out.println("""
+                
+                Do you want to register?
+                - 1. Yes
+                - 2. No""");
     }
 }
 
