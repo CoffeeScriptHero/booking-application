@@ -12,6 +12,9 @@ import java.util.List;
 public class UserLoginPassword {
     private String login;
     private String password;
+    public List<Booking> getBooking() {
+        return booking;
+    }
     private List<Booking> booking;
     private final String AUTHORIZATION = "src/main/database/LoginPassword.txt";
     private ArrayList<UserLoginPassword> userLoginPasswords = loadUserLoginPasswords();
@@ -54,6 +57,8 @@ public class UserLoginPassword {
             Logger.info("Not correct Login or Password");
             this.userLoginPasswords = userLoginPasswordsFromFile;
         } catch (IOException | ClassNotFoundException exception) {
+            Logger.error("Error");
+
         }
         return userLoginPasswordsFromFile;
     }
