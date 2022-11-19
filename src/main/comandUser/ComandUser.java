@@ -14,7 +14,6 @@ public class ComandUser {
     Scanner scannerStr = new Scanner(System.in);
     FlightController flightController = new FlightController();
     BookingController bookingController = new BookingController();
-
     UserLoginPassword userLoginPassword = new UserLoginPassword();
 
     public ComandUser() {
@@ -31,11 +30,51 @@ public class ComandUser {
 
             switch (registrationTask) {
                 case 1 -> {
-                    auditRegistration();
+
+                    if(auditRegistration() == null){
+                        return;
+                    }
+
+                    boolean logInSuccessful = true;
+                    while (logInSuccessful) {
+
+                        showTaskAuthorization();
+
+                        System.out.println("Enter a number from 0 to 5:");
+                        int numUser = scannerNumUser();
+
+                        if (numUser == 0) {
+                            ArrayList saveBooking = (ArrayList) bookingController.getBookingList();
+                            bookingController.saveData(saveBooking);
+                            audit = false;
+                            break;
+                        }
+
+                        switch (numUser) {
+                            case 1 -> {
+                                onlineScoreboard();
+                            }
+                            case 2 -> {
+                                showFlightInformation();
+                            }
+                            case 3 -> {
+                                flightSearchAndBooking();
+                            }
+                            case 4 -> {
+                                cancelTheReservation();
+                            }
+                            case 5 -> {
+                                System.out.println(auditRegistration().getBooking());
+                            }
+                            case 6 -> {
+                                logInSuccessful = false;
+                            }
+                            default -> System.out.println("Incorrect data. Try again");
+                        }
+                    }
                 }
                 case 2 -> {
-                    boolean console = true;
-                    while (console) {
+                    while (true) {
 
                         showTask();
 
@@ -64,9 +103,6 @@ public class ComandUser {
                             }
                             case 5 -> {
                                 myFlights();
-                            }
-                            case 6 -> {
-                                console = false;
                             }
                             default -> System.out.println("Incorrect data. Try again");
                         }
@@ -110,6 +146,16 @@ public class ComandUser {
     }
 
     public void showTask(){
+        System.out.println("""
+                
+                - 1. Online scoreboard
+                - 2. Show flight information
+                - 3. Flight search and booking
+                - 4. Cancel the reservation
+                - 5. My flights
+                - 0. Exit""");
+    }
+    public void showTaskAuthorization(){
         System.out.println("""
                 
                 - 1. Online scoreboard
@@ -172,7 +218,6 @@ public class ComandUser {
                                         String password = scannerStrUser();
                                         bookingController.makeBooking(flight, name, surname);
                                         UserLoginPassword newUser = new UserLoginPassword(login, password, bookingController.getMyBookings(name, surname));
-                                        System.out.println(newUser.getLogin() + newUser.getPassword() + newUser.getBooking());
                                         ArrayList<UserLoginPassword> registration = new ArrayList<UserLoginPassword>();
                                         registration.add(newUser);
                                         newUser.saveLoginPassword(registration);
@@ -220,17 +265,22 @@ public class ComandUser {
                 - 0. Exit""");
     }
 
-    public void auditRegistration(){
+    public UserLoginPassword auditRegistration(){
         System.out.println("Enter login:");
         String login = scannerStrUser();
         System.out.println("Enter password:");
         String password = scannerStrUser();
         ArrayList<UserLoginPassword> audit = userLoginPassword.loadUserLoginPasswords();
-        for (int i = 0; i < audit.size(); i++){
-            if(audit.get(i).getLogin().equals(login) && audit.get(i).getPassword().equals(password)){
+        for (UserLoginPassword loginPassword : audit) {
+            if (loginPassword.getLogin().equals(login) && loginPassword.getPassword().equals(password)) {
                 System.out.println("Check passed. Launching the program...");
+                return loginPassword;
+            }else {
+                System.out.println("Incorrect data. Restart the program");
+                return null;
             }
         }
+        return null;
     }
 
     public void doYouWantRegistration(){
@@ -241,4 +291,3 @@ public class ComandUser {
                 - 2. No""");
     }
 }
-
