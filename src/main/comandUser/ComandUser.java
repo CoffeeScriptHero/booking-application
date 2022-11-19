@@ -161,20 +161,22 @@ public class ComandUser {
                                 int registrationTask = scannerNumUser();
                                 switch (registrationTask) {
                                     case 1 -> {
-                                        System.out.println("Enter login:");
+                                        System.out.println("Create login:");
                                         String login = scannerStrUser();
-                                        System.out.println("Enter password:");
+                                        System.out.println("Create password:");
                                         String password = scannerStrUser();
+                                        bookingController.makeBooking(flight, name, surname);
                                         UserLoginPassword newUser = new UserLoginPassword(login, password, bookingController.getMyBookings(name, surname));
+                                        System.out.println(newUser.getLogin() + newUser.getPassword() + newUser.getBooking());
                                         ArrayList<UserLoginPassword> registration = new ArrayList<UserLoginPassword>();
                                         registration.add(newUser);
                                         newUser.saveLoginPassword(registration);
                                     }
                                     case 2 -> {
+                                        bookingController.makeBooking(flight, name, surname);
                                         continue;
                                     }
                                 }
-                                bookingController.makeBooking(flight, name, surname);
                                 bookingController.saveData((ArrayList<Booking>) bookingController.getMyBookings(name, surname));
 
                             }
@@ -196,9 +198,12 @@ public class ComandUser {
         System.out.println("Enter name:");
         String name = scannerStrUser();
         System.out.println("Enter surname:");
-        //Якщо немає бронювань показати
         String surname = scannerStrUser();
-        System.out.println(bookingController.getMyBookings(name, surname));
+        if(bookingController.getMyBookings(name, surname).size() == 0){
+            System.out.println("You don't have booking");
+        } else {
+            System.out.println(bookingController.getMyBookings(name, surname));
+        }
     }
 
     public void showRegistration(){
@@ -215,10 +220,9 @@ public class ComandUser {
         String login = scannerStrUser();
         System.out.println("Enter password:");
         String password = scannerStrUser();
-        UserLoginPassword user = new UserLoginPassword(login, password);
         ArrayList<UserLoginPassword> audit = userLoginPassword.loadUserLoginPasswords();
         for (int i = 0; i < audit.size(); i++){
-            if(audit.get(i).equals(user)){
+            if(audit.get(i).getLogin().equals(login) && audit.get(i).getPassword().equals(password)){
                 System.out.println("Check passed. Launching the program...");
             }
         }
