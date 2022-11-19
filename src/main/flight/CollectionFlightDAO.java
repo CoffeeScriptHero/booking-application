@@ -21,7 +21,17 @@ public class CollectionFlightDAO implements FlightDAO<Flight> {
     }
 
     public void clearDatabase() {
-        saveFlights(new ArrayList<>());
+        this.flights = new ArrayList<>();
+        saveFlights(this.flights);
+    }
+
+    public void updateDatabase() {
+        this.flights = getAllFlights();
+        saveFlights(this.flights);
+    }
+
+    public void setFlights(ArrayList<Flight> flights) {
+        this.flights = flights;
     }
 
     public ArrayList<Flight> findAvailableFlights(City destination, LocalDate date, int peopleNumber) {

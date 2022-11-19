@@ -1,9 +1,11 @@
 package main.flight;
 
+import main.exceptions.AvailableSeatsException;
 import main.styles.TextStyle;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Objects;
 import java.util.Random;
@@ -44,7 +46,15 @@ public class Flight implements Serializable {
     }
 
     public void subtractAvailableSeats(int number) {
-        this.availableSeats -= number;
+        if (this.availableSeats >= number) {
+            this.availableSeats -= number;
+        } else {
+            throw new AvailableSeatsException("Too much seats to book", this.availableSeats, number);
+        }
+    }
+
+    public LocalDateTime getLocalDateTime() {
+        return LocalDateTime.of(this.date, this.time);
     }
 
     public int getId() {

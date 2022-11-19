@@ -1,5 +1,7 @@
 package main.flight;
 
+import java.util.Random;
+
 public enum City {
     KYIV("Kyiv"),
     LVIV("Lviv"),
@@ -26,10 +28,25 @@ public enum City {
     WARSAW("Warsaw"),
     PRAGUE("Prague");
 
+    private static final Random RND = new Random();
     private final String city;
 
     City(String city) {
         this.city = city;
+    }
+
+    public static City randomCity() {
+        City[] cities = values();
+        return cities[RND.nextInt(cities.length)];
+    }
+
+    public static City randomCity(City origin) {
+        City[] cities = values();
+        City destination = cities[RND.nextInt(cities.length)];
+        while (destination.equals(origin)) {
+            destination = cities[RND.nextInt(cities.length)];
+        }
+        return destination;
     }
 
     public String getCityName() {
