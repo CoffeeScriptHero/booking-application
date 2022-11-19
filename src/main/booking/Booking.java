@@ -28,12 +28,13 @@ public class Booking implements Serializable {
 
     @Override
     public String toString() {
-        return "\nBooking { " +
-                "id=" + id +
-                ", flight=" + flight +
-                ", passName='" + name +
-                ", passSurname='" + surname +
-                "}";
+        return "\nBooking id: " +
+                "\nRace: " + flight.getId() +
+                "\nFlight from " + flight.getOrigin() +
+                " to " + flight.getDestination() +
+                "\nDate " + flight.getDate() +
+                ", Time " + flight.getTime() +
+                "\nName " + name + surname;
     }
 
     public String getName() {

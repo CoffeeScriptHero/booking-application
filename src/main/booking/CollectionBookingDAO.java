@@ -2,15 +2,13 @@ package main.booking;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
-
 public class CollectionBookingDAO implements BookingDAO {
 
     private final ArrayList<Booking> bookingList = getData();
-    File bookingBase = new File("src/main/booking/bookingData.txt");
+    File bookingBase = new File("src/main/database/bookingData.txt");
 
     @Override
-    public List<Booking> getBookingList(){
+    public ArrayList<Booking> getBookingList(){
         return bookingList;
     }
 

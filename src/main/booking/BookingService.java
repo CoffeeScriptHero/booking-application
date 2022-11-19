@@ -38,8 +38,8 @@ public class BookingService {
         }
     }
 
-    public List<Booking> getMyBookings(String name, String surname){
-        return bookingDAO.getBookingList()
+    public ArrayList<Booking> getMyBookings(String name, String surname){
+        return (ArrayList<Booking>) bookingDAO.getBookingList()
                 .stream()
                 .filter(booking -> booking.getName().equals(name) && booking.getSurname().equals(surname))
                 .collect(Collectors.toList());
@@ -53,7 +53,7 @@ public class BookingService {
         return bookingDAO.getData();
     }
 
-    public List<Booking> getBookingList(){
+    public ArrayList<Booking> getBookingList(){
         return bookingDAO.getBookingList();
     }
 
