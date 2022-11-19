@@ -1,9 +1,12 @@
 package main.flight;
 
+import jdk.jfr.Period;
 import main.logger.Logger;
 
 import java.io.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -21,7 +24,17 @@ public class CollectionFlightDAO implements FlightDAO<Flight> {
     }
 
     public void clearDatabase() {
-        saveFlights(new ArrayList<>());
+        this.flights = new ArrayList<>();
+        saveFlights(this.flights);
+    }
+
+    public void updateDatabase() {
+        this.flights = getAllFlights();
+        saveFlights(this.flights);
+    }
+
+    public void setFlights(ArrayList<Flight> flights) {
+        this.flights = flights;
     }
 
     public ArrayList<Flight> findAvailableFlights(City destination, LocalDate date, int peopleNumber) {
