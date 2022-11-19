@@ -165,6 +165,7 @@ public class ComandUser {
                                 int registrationTask = scannerNumUser();
                                 switch (registrationTask) {
                                     case 1 -> {
+
                                         System.out.println("Create login:");
                                         String login = scannerStrUser();
                                         System.out.println("Create password:");
@@ -227,6 +228,37 @@ public class ComandUser {
         ArrayList<UserLoginPassword> audit = userLoginPassword.loadUserLoginPasswords();
         for (int i = 0; i < audit.size(); i++){
             if(audit.get(i).getLogin().equals(login) && audit.get(i).getPassword().equals(password)){
+                System.out.println("Check passed. Launching the program...");
+            }
+        }
+    }
+
+    public void doYouWantRegistration(){
+        System.out.println("""
+                
+                Do you want to register?
+                - 1. Yes
+                - 2. No""");
+    }
+
+    public void showRegistration(){
+        System.out.println("""
+                
+                Are you registered?
+                - 1. Yes
+                - 2. No
+                - 0. Exit""");
+    }
+
+    public void auditRegistration(){
+        System.out.println("Enter login:");
+        String login = scannerStrUser();
+        System.out.println("Enter password:");
+        String password = scannerStrUser();
+        UserLoginPassword user = new UserLoginPassword(login, password);
+        ArrayList<UserLoginPassword> audit = userLoginPassword.loadUserLoginPasswords();
+        for (int i = 0; i < audit.size(); i++){
+            if(audit.get(i).equals(user)){
                 System.out.println("Check passed. Launching the program...");
             }
         }
