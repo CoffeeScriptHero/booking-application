@@ -21,6 +21,8 @@ public class ComandUser {
         boolean audit = true;
         while (audit) {
 
+            flightController.createFlights();
+
             showRegistration();
             int registrationTask = scannerNumUser();
 
@@ -201,7 +203,13 @@ public class ComandUser {
             } else {
                 flightController.getFlight(numUserOperation3).ifPresentOrElse(
                         (flight) -> {
-                            flight.subtractAvailableSeats(numberOfPerson);
+                            try {
+                                flight.subtractAvailableSeats(numberOfPerson);
+                                flightController.updateDatabase();
+                            }catch (Exception ex){
+                                System.out.println("Too much person.");
+                                return;
+                            }
                             for (int i = 0; i < numberOfPerson; i++) {
                                 System.out.println("Enter name:");
                                 String name = scannerStrUser();
@@ -211,7 +219,6 @@ public class ComandUser {
                                 int registrationTask = scannerNumUser();
                                 switch (registrationTask) {
                                     case 1 -> {
-
                                         System.out.println("Create login:");
                                         String login = scannerStrUser();
                                         System.out.println("Create password:");
