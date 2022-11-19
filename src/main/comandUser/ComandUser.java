@@ -14,6 +14,7 @@ public class ComandUser {
     Scanner scannerStr = new Scanner(System.in);
     FlightController flightController = new FlightController();
     BookingController bookingController = new BookingController();
+
     UserLoginPassword userLoginPassword = new UserLoginPassword();
 
     public ComandUser() {
@@ -71,6 +72,7 @@ public class ComandUser {
                         }
                     }
                 }
+
             }
         }
     }
@@ -83,6 +85,7 @@ public class ComandUser {
             }
             number = scannerNum.nextInt();
         } while (number < 0 || number > 7);
+
         return number;
     }
     public int scannerNumUserOperation(){
@@ -138,6 +141,7 @@ public class ComandUser {
         LocalDate dateUser = LocalDate.parse(date);
         System.out.println("Please, enter number of persons:");
         int numberOfPerson = scannerNumUserOperation();
+
         ArrayList<Flight> flights = flightController.findAvailableFlights(City.valueOf(destination.toUpperCase()), dateUser, numberOfPerson);
         if(flights.size() == 0){
             System.out.println("Unfortunately, there are no available flights.");
