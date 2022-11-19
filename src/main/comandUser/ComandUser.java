@@ -165,23 +165,20 @@ public class ComandUser {
                                 int registrationTask = scannerNumUser();
                                 switch (registrationTask) {
                                     case 1 -> {
-
-                                        System.out.println("Create login:");
+                                        System.out.println("Enter login:");
                                         String login = scannerStrUser();
-                                        System.out.println("Create password:");
+                                        System.out.println("Enter password:");
                                         String password = scannerStrUser();
-                                        bookingController.makeBooking(flight, name, surname);
                                         UserLoginPassword newUser = new UserLoginPassword(login, password, bookingController.getMyBookings(name, surname));
-                                        System.out.println(newUser.getLogin() + newUser.getPassword() + newUser.getBooking());
                                         ArrayList<UserLoginPassword> registration = new ArrayList<UserLoginPassword>();
                                         registration.add(newUser);
                                         newUser.saveLoginPassword(registration);
                                     }
                                     case 2 -> {
-                                        bookingController.makeBooking(flight, name, surname);
                                         continue;
                                     }
                                 }
+                                bookingController.makeBooking(flight, name, surname);
                                 bookingController.saveData((ArrayList<Booking>) bookingController.getMyBookings(name, surname));
 
                             }
@@ -209,36 +206,6 @@ public class ComandUser {
         } else {
             System.out.println(bookingController.getMyBookings(name, surname));
         }
-    }
-
-    public void showRegistration(){
-        System.out.println("""
-                
-                Are you registered?
-                - 1. Yes
-                - 2. No
-                - 0. Exit""");
-    }
-
-    public void auditRegistration(){
-        System.out.println("Enter login:");
-        String login = scannerStrUser();
-        System.out.println("Enter password:");
-        String password = scannerStrUser();
-        ArrayList<UserLoginPassword> audit = userLoginPassword.loadUserLoginPasswords();
-        for (int i = 0; i < audit.size(); i++){
-            if(audit.get(i).getLogin().equals(login) && audit.get(i).getPassword().equals(password)){
-                System.out.println("Check passed. Launching the program...");
-            }
-        }
-    }
-
-    public void doYouWantRegistration(){
-        System.out.println("""
-                
-                Do you want to register?
-                - 1. Yes
-                - 2. No""");
     }
 
     public void showRegistration(){
