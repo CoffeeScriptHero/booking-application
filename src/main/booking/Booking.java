@@ -16,7 +16,7 @@ public class Booking implements Serializable {
     private final Flight flight;
 
     public Booking(Flight flight, String name, String surname) {
-        this.id = random.nextInt(1001);
+        this.id = random.nextInt(1, 1000);
         this.flight = flight;
         this.name = name;
         this.surname = surname;
@@ -28,12 +28,13 @@ public class Booking implements Serializable {
 
     @Override
     public String toString() {
-        return "\nBooking { " +
-                "id=" + id +
-                ", flight=" + flight +
-                ", passName='" + name +
-                ", passSurname='" + surname +
-                "}";
+        return "\nBooking id: " + id +
+                "\nRace: " + flight.getId() +
+                "\nFlight from " + flight.getOrigin() +
+                " to " + flight.getDestination() +
+                "\nDate " + flight.getDate() +
+                ", Time " + flight.getTime() +
+                "\nName " + name + " " + surname;
     }
 
     public String getName() {
