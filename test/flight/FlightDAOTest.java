@@ -29,7 +29,7 @@ public class FlightDAOTest {
     void setUp() {
         FlightService flightService = new FlightService();
         flightService.createFlights();
-        this.flights = flightDAO.loadFlights();
+        this.flights = flightDAO.getAllFlights();
     }
 
     @AfterEach
@@ -96,5 +96,20 @@ public class FlightDAOTest {
         assertTrue(flightDAO.loadFlights().size() > 0);
         flightDAO.clearDatabase();
         assertEquals(0, flightDAO.loadFlights().size());
+    }
+
+    @Test
+    void ExpectSetFlightsWorksCorrectly() {
+        assertEquals(flightDAO.getAllFlights().size(), 20);
+        flightDAO.setFlights(new ArrayList<>());
+        assertEquals(flightDAO.getAllFlights().size(), 0);
+    }
+
+    @Test
+    void ExpectUpdateDatabaseUpdatesDatabase() {
+        assertEquals(flightDAO.loadFlights().size(), 20);
+        flightDAO.setFlights(new ArrayList<>());
+        flightDAO.updateDatabase();
+        assertEquals(flightDAO.loadFlights().size(), 0);
     }
 }
