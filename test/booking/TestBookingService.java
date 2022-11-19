@@ -7,13 +7,16 @@ import main.booking.Booking;
 import main.booking.BookingService;
 import main.flight.City;
 import main.flight.Flight;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class TestBookingService {
     BookingService bookingService = new BookingService();
 
-    public TestBookingService() {
+    @AfterEach
+    void clearDataBase(){
+        bookingService.clearDatabase();
     }
 
     @Test
@@ -31,7 +34,7 @@ public class TestBookingService {
         bookingService.makeBooking(new Flight(14, LocalDate.of(2022, 10, 12), LocalTime.of(14, 30), City.BOSTON, City.AMSTERDAM, 10), "Illy", "Vane");
         bookingService.makeBooking(new Flight(27, LocalDate.of(2022, 10, 12), LocalTime.of(14, 30), City.KYIV, City.BERLIN, 10), "Eliza", "Stone");
         Assertions.assertEquals(3, bookingService.getBookingList().size());
-        bookingService.cancelBooking(((Booking)bookingService.getBookingList().get(1)).getId());
+        bookingService.cancelBooking((bookingService.getBookingList().get(1)).getId());
         Assertions.assertEquals(2, bookingService.getBookingList().size());
     }
 
@@ -42,7 +45,7 @@ public class TestBookingService {
         bookingService.makeBooking(new Flight(19, LocalDate.of(2022, 10, 12), LocalTime.of(14, 30), City.KYIV, City.AMSTERDAM, 10), "Elza", "Sen");
         bookingService.makeBooking(new Flight(65, LocalDate.of(2022, 10, 12), LocalTime.of(14, 30), City.BOSTON, City.AMSTERDAM, 10), "Il", "Ge");
         bookingService.makeBooking(new Flight(27, LocalDate.of(2022, 10, 12), LocalTime.of(14, 30), City.KYIV, City.BERLIN, 10), "Il", "Ge");
-        ArrayList<Booking> expected = new ArrayList();
+        ArrayList<Booking> expected = new ArrayList<>();
         expected.add(bookingService.getBookingList().get(1));
         expected.add(bookingService.getBookingList().get(3));
         expected.add(bookingService.getBookingList().get(4));
@@ -55,7 +58,7 @@ public class TestBookingService {
         bookingService.makeBooking(new Flight(14, LocalDate.of(2022, 10, 12), LocalTime.of(14, 30), City.BOSTON, City.AMSTERDAM, 10), "Illy", "Vane");
         bookingService.makeBooking(new Flight(27, LocalDate.of(2022, 10, 12), LocalTime.of(14, 30), City.KYIV, City.BERLIN, 10), "Eliza", "Stone");
         Assertions.assertEquals(3, bookingService.getBookingList().size());
-        ArrayList<Booking> expected = new ArrayList();
+        ArrayList<Booking> expected = new ArrayList<>();
         expected.add(bookingService.getBookingList().get(0));
         expected.add(bookingService.getBookingList().get(1));
         expected.add(bookingService.getBookingList().get(2));

@@ -1,6 +1,7 @@
 package main.booking;
 
 import main.flight.Flight;
+import main.logger.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +12,9 @@ public class BookingService {
 
     public BookingService() {
         this.bookingDAO = new CollectionBookingDAO();
+    }
+    public void clearDatabase(){
+        bookingDAO.clearDatabase();
     }
 
     public Booking makeBooking(Flight flight, String name, String surname){
@@ -24,8 +28,7 @@ public class BookingService {
         try {
 
             List<Integer> idList = bookingDAO.getBookingList().stream().
-                    map(Booking::getId).
-                    collect(Collectors.toList());
+                    map(Booking::getId).toList();
 
             for (Integer integer : idList) {
                 if (integer == id) {
@@ -33,8 +36,8 @@ public class BookingService {
                     System.out.println("Your booking #" + id + " successfully canceled");
                 }
             }
-        } catch (BookingException e){
-            e.getBookingException("Can`t cancel this booking, please try again");
+        } catch (Exception e){
+            Logger.error("Can`t cancel this booking, please try again");
         }
     }
 

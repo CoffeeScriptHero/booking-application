@@ -1,11 +1,27 @@
 package main.booking;
 
+import main.logger.Logger;
+
 import java.io.*;
 import java.util.ArrayList;
 public class CollectionBookingDAO implements BookingDAO {
 
-    private final ArrayList<Booking> bookingList = getData();
+    private ArrayList<Booking> bookingList;
+
     File bookingBase = new File("src/main/database/bookingData.txt");
+
+    public CollectionBookingDAO() {
+        if (getData().isEmpty()){
+            this.bookingList = new ArrayList<>();
+        }
+        else {
+            this.bookingList = getData();
+        }
+    }
+    public void clearDatabase() {
+        saveData(new ArrayList<>());
+    }
+
 
     @Override
     public ArrayList<Booking> getBookingList(){
@@ -33,8 +49,9 @@ public class CollectionBookingDAO implements BookingDAO {
             for (Booking booking : bookingList) {
                 oos.writeObject(booking);
             }
-        } catch (BookingException | IOException e) {
-            System.out.println("Something went wrong, please try again");
+            Logger.info("Bookings are saved to file");
+        } catch (IOException exception) {
+            Logger.error("Something went wrong! Bookings are not saved to file");
         }
     }
 
@@ -45,19 +62,12 @@ public class CollectionBookingDAO implements BookingDAO {
              ObjectInputStream ois = new ObjectInputStream(fis)) {
             while (fis.available() > 0) {
                 bookingListFromBase.add((Booking) ois.readObject());
-            }
-        } catch (BookingException | IOException | ClassNotFoundException e) {
-            System.out.println("Something went wrong, please try again");
+            } Logger.info("Bookings were loaded from file");
+            this.bookingList = bookingListFromBase;
+        } catch (IOException | ClassNotFoundException exception) {
+            Logger.info("Something went wrong, bookings were not loaded from file");
         }
         return bookingListFromBase;
     }
-
-
-
-
-
-
-
-
 
 }

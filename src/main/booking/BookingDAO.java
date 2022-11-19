@@ -14,6 +14,8 @@ public interface BookingDAO {
 
    ArrayList<Booking> getData();
 
+    void clearDatabase();
+
 
 
 

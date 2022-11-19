@@ -7,14 +7,18 @@ import main.booking.Booking;
 import main.booking.CollectionBookingDAO;
 import main.flight.City;
 import main.flight.Flight;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class TestBookingDAO {
     CollectionBookingDAO bookingDAO = new CollectionBookingDAO();
 
-    public TestBookingDAO() {
+    @AfterEach
+    void clearDataBase(){
+        bookingDAO.clearDatabase();
     }
+
 
     @Test
     public void testGetBookingList() {
@@ -22,7 +26,7 @@ public class TestBookingDAO {
         bookingDAO.addBooking(new Booking(new Flight(14, LocalDate.of(2022, 10, 12), LocalTime.of(14, 30), City.BOSTON, City.AMSTERDAM, 10), "Illy", "Vane"));
         bookingDAO.addBooking(new Booking(new Flight(27, LocalDate.of(2022, 10, 12), LocalTime.of(14, 30), City.KYIV, City.BERLIN, 10), "Eliza", "Stone"));
         Assertions.assertEquals(3, bookingDAO.getBookingList().size());
-        ArrayList<Booking> expected = new ArrayList();
+        ArrayList<Booking> expected = new ArrayList<>();
         expected.add(bookingDAO.getBookingList().get(0));
         expected.add(bookingDAO.getBookingList().get(1));
         expected.add(bookingDAO.getBookingList().get(2));

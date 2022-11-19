@@ -7,6 +7,7 @@ public class BookingController {
 
     BookingService bookingService = new BookingService();
 
+
     public Booking makeBooking(Flight flight, String passName, String passSurname){
         return bookingService.makeBooking(flight, passName, passSurname);
     }
@@ -28,5 +29,9 @@ public class BookingController {
 
     public ArrayList<Booking> getBookingList(){
         return bookingService.getBookingList();
+    }
+
+    public void clearDataBase(){
+        bookingService.clearDatabase();
     }
 }
