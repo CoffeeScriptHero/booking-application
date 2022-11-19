@@ -27,7 +27,7 @@ public class FlightServiceTest {
     @BeforeEach
     void setUp() {
         flightService.createFlights();
-        this.flights = flightService.loadFlights();
+        this.flights = flightService.getAllFlights();
     }
 
     @AfterEach
@@ -117,5 +117,20 @@ public class FlightServiceTest {
         assertTrue(flightService.loadFlights().size() > 0);
         flightService.clearDatabase();
         assertEquals(0, flightService.loadFlights().size());
+    }
+
+    @Test
+    void ExpectSetFlightsWorksCorrectly() {
+        assertEquals(flightService.getAllFlights().size(), 20);
+        flightService.setFlights(new ArrayList<>());
+        assertEquals(flightService.getAllFlights().size(), 0);
+    }
+
+    @Test
+    void ExpectUpdateDatabaseUpdatesDatabase() {
+        assertEquals(flightService.loadFlights().size(), 20);
+        flightService.setFlights(new ArrayList<>());
+        flightService.updateDatabase();
+        assertEquals(flightService.loadFlights().size(), 0);
     }
 }

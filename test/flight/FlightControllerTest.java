@@ -1,3 +1,4 @@
+
 package flight;
 
 import main.flight.City;
@@ -27,7 +28,7 @@ public class FlightControllerTest {
     @BeforeEach
     void setUp() {
         flightController.createFlights();
-        this.flights = flightController.loadFlights();
+        this.flights = flightController.getAllFlights();
     }
 
     @AfterEach
@@ -117,5 +118,20 @@ public class FlightControllerTest {
         assertTrue(flightController.loadFlights().size() > 0);
         flightController.clearDatabase();
         assertEquals(0, flightController.loadFlights().size());
+    }
+
+    @Test
+    void ExpectSetFlightsWorksCorrectly() {
+        assertEquals(flightController.getAllFlights().size(), 20);
+        flightController.setFlights(new ArrayList<>());
+        assertEquals(flightController.getAllFlights().size(), 0);
+    }
+
+    @Test
+    void ExpectUpdateDatabaseUpdatesDatabase() {
+        assertEquals(flightController.loadFlights().size(), 20);
+        flightController.setFlights(new ArrayList<>());
+        flightController.updateDatabase();
+        assertEquals(flightController.loadFlights().size(), 0);
     }
 }

@@ -11,6 +11,14 @@ public class FlightController {
         flightService.clearDatabase();
     }
 
+    public void updateDatabase() {
+        flightService.updateDatabase();
+    }
+
+    public void setFlights(ArrayList<Flight> flights) {
+        flightService.setFlights(flights);
+    }
+
     public ArrayList<Flight> getAllFlights() {
         return flightService.getAllFlights();
     }
@@ -21,6 +29,10 @@ public class FlightController {
 
     public void displayAllFlights() {
         flightService.displayAllFlights();
+    }
+
+    public void displayUpcomingFlights() {
+        flightService.displayUpcomingFlights();
     }
 
     public void displayFlights(ArrayList<Flight> flights) {
