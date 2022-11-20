@@ -17,9 +17,13 @@ public class ComandUser {
     UserLoginPassword userLoginPassword = new UserLoginPassword();
 
     public ComandUser() {
+    }
 
+    public void run() {
         boolean audit = true;
         while (audit) {
+
+            flightController.createFlights();
 
             showRegistration();
             int registrationTask = scannerNumUser();
@@ -31,7 +35,7 @@ public class ComandUser {
             switch (registrationTask) {
                 case 1 -> {
 
-                    if(auditRegistration() == null){
+                    if (auditRegistration() == null) {
                         return;
                     }
 
@@ -40,11 +44,11 @@ public class ComandUser {
 
                         showTaskAuthorization();
 
-                        System.out.println("Enter a number from 0 to 5:");
+                        System.out.println("Enter a number from 0 to 6:");
                         int numUser = scannerNumUser();
 
                         if (numUser == 0) {
-                            ArrayList saveBooking = (ArrayList) bookingController.getBookingList();
+                            ArrayList saveBooking = bookingController.getBookingList();
                             bookingController.saveData(saveBooking);
                             audit = false;
                             break;
@@ -82,7 +86,7 @@ public class ComandUser {
                         int numUser = scannerNumUser();
 
                         if (numUser == 0) {
-                            ArrayList saveBooking = (ArrayList) bookingController.getBookingList();
+                            ArrayList saveBooking = bookingController.getBookingList();
                             bookingController.saveData(saveBooking);
                             audit = false;
                             break;
@@ -112,7 +116,8 @@ public class ComandUser {
             }
         }
     }
-    public int scannerNumUser(){
+
+    public int scannerNumUser() {
         int number;
         do {
             while (!scannerNum.hasNextInt()) {
@@ -124,7 +129,8 @@ public class ComandUser {
 
         return number;
     }
-    public int scannerNumUserOperation(){
+
+    public int scannerNumUserOperation() {
         int number;
         do {
             while (!scannerNum.hasNextInt()) {
@@ -137,7 +143,7 @@ public class ComandUser {
     }
 
     public String scannerStrUser() {
-        while (!(scannerStr.hasNext())){
+        while (!(scannerStr.hasNext())) {
             System.out.println("Incorrect data. Try again:");
             scannerStr.next();
         }
@@ -145,9 +151,9 @@ public class ComandUser {
         return vowel;
     }
 
-    public void showTask(){
+    public void showTask() {
         System.out.println("""
-                
+                                
                 - 1. Online scoreboard
                 - 2. Show flight information
                 - 3. Flight search and booking
@@ -155,9 +161,10 @@ public class ComandUser {
                 - 5. My flights
                 - 0. Exit""");
     }
-    public void showTaskAuthorization(){
+
+    public void showTaskAuthorization() {
         System.out.println("""
-                
+                                
                 - 1. Online scoreboard
                 - 2. Show flight information
                 - 3. Flight search and booking
@@ -167,11 +174,11 @@ public class ComandUser {
                 - 0. Exit""");
     }
 
-    public void onlineScoreboard(){
-        flightController.displayAllFlights();
+    public void onlineScoreboard() {
+        flightController.displayUpcomingFlights();
     }
 
-    public void showFlightInformation(){
+    public void showFlightInformation() {
         System.out.println("Please, enter id flight:");
         int id = scannerNumUserOperation();
         flightController.getFlight(id).ifPresentOrElse(
@@ -179,7 +186,7 @@ public class ComandUser {
                 () -> System.out.println("No flight, please try again:"));
     }
 
-    public void flightSearchAndBooking(){
+    public void flightSearchAndBooking() {
         System.out.println("Please, enter your destination:");
         String destination = scannerStrUser();
         System.out.println("Please, enter date (in format yyyy-mm-dd):");
@@ -189,9 +196,9 @@ public class ComandUser {
         int numberOfPerson = scannerNumUserOperation();
 
         ArrayList<Flight> flights = flightController.findAvailableFlights(City.valueOf(destination.toUpperCase()), dateUser, numberOfPerson);
-        if(flights.size() == 0){
+        if (flights.size() == 0) {
             System.out.println("Unfortunately, there are no available flights.");
-        }else {
+        } else {
             flightController.displayFlights(flights);
             System.out.println("\n" +
                     "Enter the ID of the flight you are interested in (to exit to the main menu, press 0):");
@@ -201,7 +208,12 @@ public class ComandUser {
             } else {
                 flightController.getFlight(numUserOperation3).ifPresentOrElse(
                         (flight) -> {
-                            flight.subtractAvailableSeats(numberOfPerson);
+                            try {
+                                flight.subtractAvailableSeats(numberOfPerson);
+                                flightController.updateDatabase();
+                            } catch (Exception ex) {
+                                return;
+                            }
                             for (int i = 0; i < numberOfPerson; i++) {
                                 System.out.println("Enter name:");
                                 String name = scannerStrUser();
@@ -211,7 +223,6 @@ public class ComandUser {
                                 int registrationTask = scannerNumUser();
                                 switch (registrationTask) {
                                     case 1 -> {
-
                                         System.out.println("Create login:");
                                         String login = scannerStrUser();
                                         System.out.println("Create password:");
@@ -237,35 +248,35 @@ public class ComandUser {
         }
     }
 
-    public void cancelTheReservation(){
+    public void cancelTheReservation() {
         System.out.println("Enter the ID of the booking:");
         int idCanceled = scannerNumUserOperation();
         bookingController.cancelBooking(idCanceled);
 
     }
 
-    public void myFlights(){
+    public void myFlights() {
         System.out.println("Enter name:");
         String name = scannerStrUser();
         System.out.println("Enter surname:");
         String surname = scannerStrUser();
-        if(bookingController.getMyBookings(name, surname).size() == 0){
+        if (bookingController.getMyBookings(name, surname).size() == 0) {
             System.out.println("You don't have booking");
         } else {
             System.out.println(bookingController.getMyBookings(name, surname));
         }
     }
 
-    public void showRegistration(){
+    public void showRegistration() {
         System.out.println("""
-                
+                                
                 Are you registered?
                 - 1. Yes
                 - 2. No
                 - 0. Exit""");
     }
 
-    public UserLoginPassword auditRegistration(){
+    public UserLoginPassword auditRegistration() {
         System.out.println("Enter login:");
         String login = scannerStrUser();
         System.out.println("Enter password:");
@@ -275,7 +286,7 @@ public class ComandUser {
             if (loginPassword.getLogin().equals(login) && loginPassword.getPassword().equals(password)) {
                 System.out.println("Check passed. Launching the program...");
                 return loginPassword;
-            }else {
+            } else {
                 System.out.println("Incorrect data. Restart the program");
                 return null;
             }
@@ -283,9 +294,9 @@ public class ComandUser {
         return null;
     }
 
-    public void doYouWantRegistration(){
+    public void doYouWantRegistration() {
         System.out.println("""
-                
+                                
                 Do you want to register?
                 - 1. Yes
                 - 2. No""");
