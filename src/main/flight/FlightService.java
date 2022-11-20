@@ -69,7 +69,7 @@ public class FlightService {
 
     public void createFlights() {
         ArrayList<Flight> flights = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 50; i++) {
             City origin = City.randomCity();
             flights.add(new Flight(generateDate(), generateTime(), origin, City.randomCity(origin), generateSeats()));
         }
@@ -78,7 +78,7 @@ public class FlightService {
     }
 
     private LocalDate generateDate() {
-        int days = new Random().nextInt(3);
+        int days = new Random().nextInt(11);
         return LocalDate.now().plusDays(days);
     }
 

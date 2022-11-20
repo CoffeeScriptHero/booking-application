@@ -3,11 +3,10 @@ package main.booking;
 import main.flight.Flight;
 
 import java.util.ArrayList;
-import java.util.List;
-
 public class BookingController {
 
     BookingService bookingService = new BookingService();
+
 
     public Booking makeBooking(Flight flight, String passName, String passSurname){
         return bookingService.makeBooking(flight, passName, passSurname);
@@ -16,7 +15,7 @@ public class BookingController {
     public void cancelBooking(int id){
        bookingService.cancelBooking(id);
     }
-    public List<Booking> getMyBookings(String name, String surname){
+    public ArrayList<Booking> getMyBookings(String name, String surname){
         return bookingService.getMyBookings(name, surname);
     }
 
@@ -28,7 +27,11 @@ public class BookingController {
         return bookingService.getData();
     }
 
-    public List<Booking> getBookingList(){
+    public ArrayList<Booking> getBookingList(){
         return bookingService.getBookingList();
+    }
+
+    public void clearDataBase(){
+        bookingService.clearDatabase();
     }
 }

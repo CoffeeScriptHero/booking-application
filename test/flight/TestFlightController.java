@@ -17,7 +17,7 @@ import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class FlightControllerTest {
+public class TestFlightController {
     private final FlightController flightController = new FlightController();
     private ArrayList<Flight> flights;
     private final Flight testFlight = new Flight(
@@ -39,10 +39,10 @@ public class FlightControllerTest {
     @Test
     void ExpectGetAllFlightsReturnsArrayListOfFlights() {
         ArrayList<Flight> possibleFlights = flightController.getAllFlights();
-        assertEquals(possibleFlights.size(), 20);
+        assertEquals(possibleFlights.size(), 50);
         assertEquals(this.flights, possibleFlights);
-        assertNotNull(possibleFlights.get(new Random().nextInt(0, 20)));
-        assertNotNull(possibleFlights.get(new Random().nextInt(0, 20)));
+        assertNotNull(possibleFlights.get(new Random().nextInt(0, 50)));
+        assertNotNull(possibleFlights.get(new Random().nextInt(0, 50)));
     }
 
     @Test
@@ -95,7 +95,7 @@ public class FlightControllerTest {
         assertEquals(loadedFlights, new ArrayList<>());
         flightController.saveFlights(this.flights);
         loadedFlights = flightController.loadFlights();
-        assertEquals(loadedFlights.size(), 20);
+        assertEquals(loadedFlights.size(), 50);
         assertEquals(loadedFlights, this.flights);
     }
 
@@ -103,14 +103,14 @@ public class FlightControllerTest {
     void ExpectCreateFlightsCreatesFlightsAndSavesThemToDatabase() {
         ArrayList<Flight> loadedFlights = flightController.loadFlights();
         assertEquals(this.flights, loadedFlights);
-        assertEquals(loadedFlights.size(), 20);
+        assertEquals(loadedFlights.size(), 50);
         flightController.saveFlights(new ArrayList<>());
         loadedFlights = flightController.loadFlights();
         assertNotEquals(this.flights, loadedFlights);
         assertEquals(loadedFlights.size(), 0);
         flightController.createFlights();
         loadedFlights = flightController.loadFlights();
-        assertEquals(loadedFlights.size(), 20);
+        assertEquals(loadedFlights.size(), 50);
     }
 
     @Test
@@ -122,14 +122,14 @@ public class FlightControllerTest {
 
     @Test
     void ExpectSetFlightsWorksCorrectly() {
-        assertEquals(flightController.getAllFlights().size(), 20);
+        assertEquals(flightController.getAllFlights().size(), 50);
         flightController.setFlights(new ArrayList<>());
         assertEquals(flightController.getAllFlights().size(), 0);
     }
 
     @Test
     void ExpectUpdateDatabaseUpdatesDatabase() {
-        assertEquals(flightController.loadFlights().size(), 20);
+        assertEquals(flightController.loadFlights().size(), 50);
         flightController.setFlights(new ArrayList<>());
         flightController.updateDatabase();
         assertEquals(flightController.loadFlights().size(), 0);
