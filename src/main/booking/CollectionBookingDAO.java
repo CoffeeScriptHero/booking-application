@@ -8,7 +8,7 @@ public class CollectionBookingDAO implements BookingDAO {
 
     private ArrayList<Booking> bookingList;
 
-    File bookingBase = new File("src/main/database/bookingData.txt");
+    File bookingBase = new File("bookingData.txt");
 
     public CollectionBookingDAO() {
         if (getData().isEmpty()){

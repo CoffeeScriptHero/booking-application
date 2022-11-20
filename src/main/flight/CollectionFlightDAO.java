@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class CollectionFlightDAO implements FlightDAO<Flight> {
     private static final CollectionFlightDAO collectionFlightDAO = new CollectionFlightDAO();
-    private final String DATABASE = "src/main/database/flights.txt";
+    private final File DATABASE = new File("flights.txt");
     private ArrayList<Flight> flights = loadFlights();
 
     private CollectionFlightDAO() {
@@ -69,7 +69,7 @@ public class CollectionFlightDAO implements FlightDAO<Flight> {
             Logger.info("Flights were loaded from file");
             this.flights = flightsFromFile;
         } catch (IOException | ClassNotFoundException exception) {
-            Logger.info("Flights were not loaded from file");
+            Logger.error("Flights were not loaded from file");
         }
         return flightsFromFile;
     }

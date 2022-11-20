@@ -269,7 +269,8 @@ public class ComandUser {
 
     public void showRegistration() {
         System.out.println("""
-                                
+                
+                
                 Are you registered?
                 - 1. Yes
                 - 2. No

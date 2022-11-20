@@ -16,12 +16,8 @@ public class UserLoginPassword implements Serializable{
         return booking;
     }
     private List<Booking> booking;
-    private final String AUTHORIZATION = "src/main/database/LoginPassword.txt";
+    private final File AUTHORIZATION = new File("LoginPassword.txt");
 
-//    public UserLoginPassword(String login, String password){
-//        this.login = login;
-//        this.password = password;
-//    }
     public UserLoginPassword(String login, String password, List<Booking> booking){
         this.login = login;
         this.password = password;
