@@ -46,9 +46,9 @@ public class TestFlightDAO {
     @Test
     void ExpectGetAllFlightsReturnsArrayListOfFlights() {
         ArrayList<Flight> possibleFlights = flightDAO.getAllFlights();
-        assertEquals(possibleFlights.size(), 20);
-        assertNotNull(possibleFlights.get(new Random().nextInt(0, 20)));
-        assertNotNull(possibleFlights.get(new Random().nextInt(0, 20)));
+        assertEquals(possibleFlights.size(), 50);
+        assertNotNull(possibleFlights.get(new Random().nextInt(0, 50)));
+        assertNotNull(possibleFlights.get(new Random().nextInt(0, 50)));
     }
 
     @Test
@@ -87,7 +87,7 @@ public class TestFlightDAO {
         assertEquals(loadedFlights, new ArrayList<>());
         flightDAO.saveFlights(this.flights);
         loadedFlights = flightDAO.loadFlights();
-        assertEquals(loadedFlights.size(), 20);
+        assertEquals(loadedFlights.size(), 50);
         assertEquals(loadedFlights, this.flights);
     }
 
@@ -100,14 +100,14 @@ public class TestFlightDAO {
 
     @Test
     void ExpectSetFlightsWorksCorrectly() {
-        assertEquals(flightDAO.getAllFlights().size(), 20);
+        assertEquals(flightDAO.getAllFlights().size(), 50);
         flightDAO.setFlights(new ArrayList<>());
         assertEquals(flightDAO.getAllFlights().size(), 0);
     }
 
     @Test
     void ExpectUpdateDatabaseUpdatesDatabase() {
-        assertEquals(flightDAO.loadFlights().size(), 20);
+        assertEquals(flightDAO.loadFlights().size(), 50);
         flightDAO.setFlights(new ArrayList<>());
         flightDAO.updateDatabase();
         assertEquals(flightDAO.loadFlights().size(), 0);

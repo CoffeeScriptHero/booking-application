@@ -38,10 +38,10 @@ public class TestFlightService {
     @Test
     void ExpectGetAllFlightsReturnsArrayListOfFlights() {
         ArrayList<Flight> possibleFlights = flightService.getAllFlights();
-        assertEquals(possibleFlights.size(), 20);
+        assertEquals(possibleFlights.size(), 50);
         assertEquals(this.flights, possibleFlights);
-        assertNotNull(possibleFlights.get(new Random().nextInt(0, 20)));
-        assertNotNull(possibleFlights.get(new Random().nextInt(0, 20)));
+        assertNotNull(possibleFlights.get(new Random().nextInt(0, 50)));
+        assertNotNull(possibleFlights.get(new Random().nextInt(0, 50)));
     }
 
     @Test
@@ -94,7 +94,7 @@ public class TestFlightService {
         assertEquals(loadedFlights, new ArrayList<>());
         flightService.saveFlights(this.flights);
         loadedFlights = flightService.loadFlights();
-        assertEquals(loadedFlights.size(), 20);
+        assertEquals(loadedFlights.size(), 50);
         assertEquals(loadedFlights, this.flights);
     }
 
@@ -102,14 +102,14 @@ public class TestFlightService {
     void ExpectCreateFlightsCreatesFlightsAndSavesThemToDatabase() {
         ArrayList<Flight> loadedFlights = flightService.loadFlights();
         assertEquals(this.flights, loadedFlights);
-        assertEquals(loadedFlights.size(), 20);
+        assertEquals(loadedFlights.size(), 50);
         flightService.saveFlights(new ArrayList<>());
         loadedFlights = flightService.loadFlights();
         assertNotEquals(this.flights, loadedFlights);
         assertEquals(loadedFlights.size(), 0);
         flightService.createFlights();
         loadedFlights = flightService.loadFlights();
-        assertEquals(loadedFlights.size(), 20);
+        assertEquals(loadedFlights.size(), 50);
     }
 
     @Test
@@ -121,14 +121,14 @@ public class TestFlightService {
 
     @Test
     void ExpectSetFlightsWorksCorrectly() {
-        assertEquals(flightService.getAllFlights().size(), 20);
+        assertEquals(flightService.getAllFlights().size(), 50);
         flightService.setFlights(new ArrayList<>());
         assertEquals(flightService.getAllFlights().size(), 0);
     }
 
     @Test
     void ExpectUpdateDatabaseUpdatesDatabase() {
-        assertEquals(flightService.loadFlights().size(), 20);
+        assertEquals(flightService.loadFlights().size(), 50);
         flightService.setFlights(new ArrayList<>());
         flightService.updateDatabase();
         assertEquals(flightService.loadFlights().size(), 0);
