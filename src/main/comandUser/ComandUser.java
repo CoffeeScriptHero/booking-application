@@ -23,6 +23,8 @@ public class ComandUser {
         boolean audit = true;
         while (audit) {
 
+            flightController.createFlights();
+
             showRegistration();
             int registrationTask = scannerNumUser();
 
@@ -41,7 +43,6 @@ public class ComandUser {
                     while (logInSuccessful) {
 
                         showTaskAuthorization();
-
 
                         System.out.println("Enter a number from 0 to 6:");
                         int numUser = scannerNumUser();
@@ -222,7 +223,6 @@ public class ComandUser {
                                 int registrationTask = scannerNumUser();
                                 switch (registrationTask) {
                                     case 1 -> {
-
                                         System.out.println("Create login:");
                                         String login = scannerStrUser();
                                         System.out.println("Create password:");
