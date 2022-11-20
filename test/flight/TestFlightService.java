@@ -16,7 +16,7 @@ import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class FlightServiceTest {
+public class TestFlightService {
     private final FlightService flightService = new FlightService();
     private ArrayList<Flight> flights;
     private final Flight testFlight = new Flight(

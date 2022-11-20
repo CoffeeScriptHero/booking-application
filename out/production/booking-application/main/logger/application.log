@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 16/11/2022 16:38 [DEBUG] Flights are saved to a file
 16/11/2022 16:38 [DEBUG] Flights were loaded from file
 16/11/2022 16:40 [DEBUG] Flights were loaded from file
@@ -2746,4 +2747,37 @@
 19/11/2022 21:48 [DEBUG] Flights were loaded from file
 19/11/2022 21:49 [DEBUG] Flights have been received
 19/11/2022 21:50 [DEBUG] LoginPassword are saved to a file
+>>>>>>> master
+=======
+20/11/2022 13:31 [DEBUG] Flights were not loaded from file
+20/11/2022 13:31 [DEBUG] Something went wrong, bookings were not loaded from file
+20/11/2022 13:31 [DEBUG] Flights are saved to a file
+20/11/2022 13:32 [DEBUG] Flights were loaded from file
+20/11/2022 13:32 [DEBUG] Something went wrong, bookings were not loaded from file
+20/11/2022 13:32 [DEBUG] Flights are saved to a file
+20/11/2022 13:32 [DEBUG] Flights have been received
+20/11/2022 13:34 [DEBUG] Flights were loaded from file
+20/11/2022 13:34 [DEBUG] Something went wrong, bookings were not loaded from file
+20/11/2022 13:34 [DEBUG] Flights are saved to a file
+20/11/2022 13:34 [DEBUG] Flights have been received
+20/11/2022 13:34 [DEBUG] Flights are saved to a file
+20/11/2022 13:34 [DEBUG] LoginPassword are saved to a file
+20/11/2022 13:34 [DEBUG] Bookings are saved to file
+20/11/2022 13:35 [DEBUG] Bookings are saved to file
+20/11/2022 13:35 [DEBUG] Flights were loaded from file
+20/11/2022 13:35 [DEBUG] Bookings were loaded from file
+20/11/2022 13:35 [DEBUG] Bookings were loaded from file
+20/11/2022 13:35 [DEBUG] Flights are saved to a file
+20/11/2022 13:35 [DEBUG] Bookings are saved to file
+20/11/2022 13:36 [DEBUG] Flights were not loaded from file
+20/11/2022 13:36 [DEBUG] Something went wrong, bookings were not loaded from file
+20/11/2022 13:36 [DEBUG] Flights are saved to a file
+20/11/2022 13:36 [DEBUG] Flights are saved to a file
+20/11/2022 13:37 [DEBUG] Flights were loaded from file
+20/11/2022 13:37 [DEBUG] Something went wrong, bookings were not loaded from file
+20/11/2022 13:37 [DEBUG] Flights are saved to a file
+20/11/2022 13:37 [DEBUG] Flights have been received
+20/11/2022 13:37 [DEBUG] Flights have been received
+20/11/2022 13:37 [DEBUG] Flights are saved to a file
+20/11/2022 13:37 [DEBUG] Bookings are saved to file
 >>>>>>> master
