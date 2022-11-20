@@ -2612,6 +2612,7 @@
 19/11/2022 16:08 [ERROR] Error
 19/11/2022 16:08 [DEBUG] Flights were loaded from file
 19/11/2022 16:08 [ERROR] Error
+<<<<<<< HEAD
 19/11/2022 22:12 [DEBUG] Flights were loaded from file
 19/11/2022 22:12 [DEBUG] Something went wrong, bookings were not loaded from file
 19/11/2022 22:12 [DEBUG] Flights have been received
@@ -2666,3 +2667,47 @@
 19/11/2022 22:33 [DEBUG] Bookings were loaded from file
 19/11/2022 22:33 [DEBUG] Bookings were loaded from file
 19/11/2022 22:33 [DEBUG] Flights are saved to a file
+=======
+19/11/2022 20:45 [DEBUG] Flights were loaded from file
+19/11/2022 20:45 [ERROR] Error
+19/11/2022 20:45 [DEBUG] Flights have been received
+19/11/2022 20:46 [ERROR] Error
+19/11/2022 20:46 [ERROR] LoginPassword are not saved to a file
+19/11/2022 20:46 [DEBUG] Flights were loaded from file
+19/11/2022 20:46 [ERROR] Error
+19/11/2022 20:46 [ERROR] Error
+19/11/2022 21:00 [DEBUG] Flights were loaded from file
+19/11/2022 21:00 [DEBUG] Flights were loaded from file
+19/11/2022 21:00 [DEBUG] Flights have been received
+19/11/2022 21:01 [ERROR] LoginPassword are not saved to a file
+19/11/2022 21:02 [DEBUG] Flights were loaded from file
+19/11/2022 21:02 [ERROR] Error
+19/11/2022 21:04 [DEBUG] Flights were loaded from file
+19/11/2022 21:04 [ERROR] Error
+19/11/2022 21:06 [DEBUG] Flights were loaded from file
+19/11/2022 21:06 [DEBUG] Flights have been received
+19/11/2022 21:07 [DEBUG] LoginPassword are saved to a file
+19/11/2022 21:07 [DEBUG] Flights were loaded from file
+19/11/2022 21:07 [DEBUG] Not correct Login or Password
+19/11/2022 21:10 [DEBUG] Flights were loaded from file
+19/11/2022 21:10 [DEBUG] Not correct Login or Password
+19/11/2022 21:11 [DEBUG] Flights were loaded from file
+19/11/2022 21:12 [DEBUG] LogIn successful
+19/11/2022 21:28 [DEBUG] Flights were loaded from file
+19/11/2022 21:28 [DEBUG] LogIn successful
+19/11/2022 21:28 [DEBUG] LogIn successful
+19/11/2022 21:30 [DEBUG] Flights were loaded from file
+19/11/2022 21:30 [DEBUG] LogIn successful
+19/11/2022 21:30 [DEBUG] LogIn successful
+19/11/2022 21:32 [DEBUG] Flights were loaded from file
+19/11/2022 21:36 [DEBUG] Flights were loaded from file
+19/11/2022 21:36 [DEBUG] Flights were loaded from file
+19/11/2022 21:38 [DEBUG] Flights were loaded from file
+19/11/2022 21:38 [DEBUG] Flights were loaded from file
+19/11/2022 21:41 [DEBUG] Flights were loaded from file
+19/11/2022 21:41 [DEBUG] Flights have been received
+19/11/2022 21:44 [DEBUG] LoginPassword are saved to a file
+19/11/2022 21:48 [DEBUG] Flights were loaded from file
+19/11/2022 21:49 [DEBUG] Flights have been received
+19/11/2022 21:50 [DEBUG] LoginPassword are saved to a file
+>>>>>>> master
