@@ -17,7 +17,7 @@ import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class FlightDAOTest {
+public class TestFlightDAO {
     private final CollectionFlightDAO flightDAO = CollectionFlightDAO.getInstance();
     private ArrayList<Flight> flights;
     private final Flight testFlight = new Flight(
